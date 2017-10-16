@@ -9,6 +9,13 @@
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/quantlane.css">
 
+		<style type="text/css">
+			section > img {
+				border: none !important;
+				box-shadow: none !important;
+			}
+		</style>
+
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
@@ -34,10 +41,104 @@
 
 
 				<section>
-					<h2>Example</h2>
+					<h2>Why Docker?</h2>
+					<ul>
+						<li>Reproducible builds</li>
+						<li>Ease of deployment</li>
+						<li>Isolation of individual devices (with multiple devices on single host)</li>
+						<li>Run across heterogeneous driver/toolkit environments</li>
+						<li>Requires only the NVIDIA driver to be installed</li>
+						<li>Enables "fire and forget" GPU applications</li>
+					</ul>
+				</section>
+
+
+				<section>
+					<h2>How ?</h2>
+
 					<p>
-						TODO
+						Specialized Docker images by NVIDIA
+						<a href="https://github.com/NVIDIA/nvidia-docker/">https://github.com/NVIDIA/nvidia-docker/</a>
 					</p>
+
+					<p>Built on top of:</p>
+					<ul>
+						<li>Ubuntu 16.04 LTS</li>
+						<li>Ubuntu 14.04 LTS</li>
+						<li>CentOS 6</li>
+						<li>CentOS 7</li>
+					</ul>
+				</section>
+
+
+				<section>
+					<h2>Ready-made images</h2>
+
+					<dl>
+						<dt>Caffe</dt>
+						<dd><a href="https://github.com/BVLC/caffe/">https://github.com/BVLC/caffe/</a></dd>
+
+						<dt>Caffe2</dt>
+						<dd><a href="https://hub.docker.com/r/caffe2ai/caffe2/">https://hub.docker.com/r/caffe2ai/caffe2/</a></dd>
+
+						<dt>TensorFlow</dt>
+						<dd>
+							<a href="https://hub.docker.com/r/tensorflow/tensorflow/">https://hub.docker.com/r/tensorflow/tensorflow/</a>
+						</dd>				
+
+						<dt>MXNet</dt>
+						<dd><a href="https://hub.docker.com/r/mxnet/">https://hub.docker.com/r/mxnet/</a></dd>
+
+						<dt>PyTorch</dt>
+						<dd><a href="https://hub.docker.com/r/pytorch/pytorch/">https://hub.docker.com/r/pytorch/pytorch/</a></dd>
+					</dl>
+
+					<p>
+						We forked the TensorFlow image and added support for Python 3
+						<a href="https://hub.docker.com/u/quantlane/tensorflow">https://hub.docker.com/u/quantlane/tensorflow</a>
+					</p>
+				</section>
+
+
+				<section>
+					<h2>Usage</h2>
+
+					Easy as running:
+					<code>/usr/bin/nvidia-docker run -it tensorflow/tensorflow:latest-gpu</code>
+				</section>
+
+
+				<section>
+					<h2>How to let a non-admin user use this</h2>
+
+					<ol>
+						<li>Add non-privileged UNIX user on server</li>
+						<li>that is <strong>not</strong> a member of the <code>docker</code> group</li>
+						<li>have a long-running TensorFlow container</li>
+						<li>
+							Allow the non-privileged user to run
+							<br \>
+							<code>docker exec -it ...</code>
+							<br \>
+							(E.g. using <code>sudo</code>)
+						</li>
+					</ol>
+				</section>
+
+
+				<section>
+					<h2>Future</h2>
+
+					<ul>
+						<li>
+							NVIDIA Docker 2
+							<ul>
+								<li>No wrapper command</li>
+								<li>GPU support for any Docker image</li>
+							</ul>
+						</li>
+						<li>Experimental support for scheduling GPUs in the Kubernetes <br \> <a href="https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus">https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/</a></li>
+					</ul>
 				</section>
 
 
@@ -45,7 +146,7 @@
 					<img class="logo" src="img/logo-black.png" alt="Quantlane">
 					<br>
 					<h4>Thank you</h4>
-					<a href="#"><span class="email-name">libor@</span>quantlane.com</a>
+					<a href="libor@quantlane.com"><span class="email-name">libor@</span>quantlane.com</a>
 				</section>
 
 
