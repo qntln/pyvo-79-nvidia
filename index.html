@@ -35,25 +35,25 @@
 
 				<section class="intro-slide">
 					<img class="logo" src="img/logo-white.png" alt="Quantlane">
-					<h2>NVIDIA Docker</h2>
+					<h2>NVIDIA in Docker</h2>
 					<h4>Libor Jonát</h4>
 				</section>
 
 
 				<section>
-					<h2>What we wanted ?</h2>
+					<h2>What we wanted?</h2>
 
 					<ul>
-						<li>Easily run TensorFlow</li>
+						<li>Run TensorFlow easily</li>
 						<li>Quickly reproducible environment</li>
-						<li>Multiple version and easy update of TensorFlow</li>
+						<li>Multiple TensorFlow versions and easy upgrades</li>
 						<li>Project isolation</li>
 					</ul>
 				</section>
 
 
 				<section>
-					<h2>Use docker</h2>
+					<h2>Use Docker</h2>
 					<ul>
 						<li>Quickly reproducible environment</li>
 						<li>Project isolation</li>
@@ -63,12 +63,12 @@
 
 
 				<section>
-					<h2>How ?</h2>
+					<h2>How?</h2>
 
 					<a href="https://github.com/NVIDIA/nvidia-docker/">https://github.com/NVIDIA/nvidia-docker/</a>
 					<ul>
-						<li>Just a wrapper</li>
-						<li>Supports GPU isolation (in multiple GPUs environment)</li>
+						<li>Just a wrapper around the <code>docker</code> command line tool</li>
+						<li>Supports GPU isolation when you have multiple GPUs</li>
 						<li>
 							Specialized Docker images by NVIDIA:
 							<ul>
@@ -84,7 +84,7 @@
 					<h2>Usage</h2>
 					<pre><code>nvidia-docker run -it tensorflow/tensorflow:latest-gpu</code></pre>
 
-					<p>If you don’t want to use the nvidia-docker wrapper, you can add the command-line arguments manually:</p>
+					<p>If you don’t want to use the nvidia-docker wrapper, you can add the command line arguments manually:</p>
 					<pre><code>docker run \
 	--device=/dev/nvidiactl \
 	--device=/dev/nvidia-uvm \
@@ -126,8 +126,8 @@
 					<h2>How to let a non-admin user use this</h2>
 
 					<ol>
-						<li>Add a non-privileged UNIX user...</li>
-						<li>that is <strong>not</strong> a member of the <code>docker</code> group.</li>
+						<li>Add a non-privileged UNIX user&hellip;</li>
+						<li>&hellip;that is <strong>not</strong> a member of the <code>docker</code> group.</li>
 						<li>Have a long-running TensorFlow container</li>
 						<li>
 							Allow the non-privileged user to run
