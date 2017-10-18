@@ -35,39 +35,61 @@
 
 				<section class="intro-slide">
 					<img class="logo" src="img/logo-white.png" alt="Quantlane">
-					<h2>NVIDIA Docker</h2>
+					<h2>NVIDIA in Docker</h2>
 					<h4>Libor Jonát</h4>
 				</section>
 
 
 				<section>
-					<h2>Why Docker?</h2>
+					<h2>What we wanted?</h2>
+
 					<ul>
-						<li>Reproducible builds</li>
-						<li>Ease of deployment</li>
-						<li>Isolation of individual devices (with multiple devices on single host)</li>
-						<li>Run across heterogeneous driver/toolkit environments</li>
-						<li>Requires only the NVIDIA driver to be installed</li>
-						<li>Enables "fire and forget" GPU applications</li>
+						<li>Run TensorFlow easily</li>
+						<li>Quickly reproducible environment</li>
+						<li>Multiple TensorFlow versions and easy upgrades</li>
+						<li>Project isolation</li>
 					</ul>
 				</section>
 
 
 				<section>
-					<h2>How ?</h2>
-
-					<p>
-						Specialized Docker images by NVIDIA
-						<a href="https://github.com/NVIDIA/nvidia-docker/">https://github.com/NVIDIA/nvidia-docker/</a>
-					</p>
-
-					<p>Built on top of:</p>
+					<h2>Use Docker</h2>
 					<ul>
-						<li>Ubuntu 16.04 LTS</li>
-						<li>Ubuntu 14.04 LTS</li>
-						<li>CentOS 6</li>
-						<li>CentOS 7</li>
+						<li>Quickly reproducible environment</li>
+						<li>Project isolation</li>
+						<li>Hardware isolation</li>
 					</ul>
+				</section>
+
+
+				<section>
+					<h2>How?</h2>
+
+					<a href="https://github.com/NVIDIA/nvidia-docker/">https://github.com/NVIDIA/nvidia-docker/</a>
+					<ul>
+						<li>Just a wrapper around the <code>docker</code> command line tool</li>
+						<li>Supports GPU isolation when you have multiple GPUs</li>
+						<li>
+							Specialized Docker images by NVIDIA:
+							<ul>
+								<li>Ubuntu</li>
+								<li>CentOS</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+
+				<section>
+					<h2>Usage</h2>
+					<pre><code>nvidia-docker run -it tensorflow/tensorflow:latest-gpu</code></pre>
+
+					<p>If you don’t want to use the nvidia-docker wrapper, you can add the command line arguments manually:</p>
+					<pre><code>docker run \
+	--device=/dev/nvidiactl \
+	--device=/dev/nvidia-uvm \
+	--device=/dev/nvidia0 \
+	...</code></pre>
 				</section>
 
 
@@ -101,26 +123,18 @@
 
 
 				<section>
-					<h2>Usage</h2>
-
-					Easy as running:
-					<code>/usr/bin/nvidia-docker run -it tensorflow/tensorflow:latest-gpu</code>
-				</section>
-
-
-				<section>
 					<h2>How to let a non-admin user use this</h2>
 
 					<ol>
-						<li>Add non-privileged UNIX user on server</li>
-						<li>that is <strong>not</strong> a member of the <code>docker</code> group</li>
-						<li>have a long-running TensorFlow container</li>
+						<li>Add a non-privileged UNIX user&hellip;</li>
+						<li>&hellip;that is <strong>not</strong> a member of the <code>docker</code> group.</li>
+						<li>Have a long-running TensorFlow container</li>
 						<li>
 							Allow the non-privileged user to run
 							<br \>
 							<code>docker exec -it ...</code>
 							<br \>
-							(E.g. using <code>sudo</code>)
+							(E.g. using <code>sudo</code>.)
 						</li>
 					</ol>
 				</section>
@@ -137,7 +151,7 @@
 								<li>GPU support for any Docker image</li>
 							</ul>
 						</li>
-						<li>Experimental support for scheduling GPUs in the Kubernetes <br \> <a href="https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus">https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/</a></li>
+						<li>Experimental support for scheduling GPUs in Kubernetes <br \> <a href="https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus">https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/</a></li>
 					</ul>
 				</section>
 
